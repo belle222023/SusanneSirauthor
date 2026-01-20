@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Susanne Sir | Home</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-content">
+    <h1 class="logo">
+  <span class="white">Susanne</span> <span class="red">Sir</span>
+</h1>
+    <button class="menu-toggle">&#9776;</button>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="books.html">Books</a>
+      <a href="review.html">Review</a>
+       <a href="preview.html">Video</a>
+       <a href="gallery.html">Gallery</a>
+       <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero hero-video">
+  <video autoplay muted loop playsinline class="hero-bg">
+    <source src="cover.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner container">
+    <div class="hero-text">
+      <h2><span>Murder in the Shores Series</span></h2>
+      <p class="kicker">
+        Cozy mysteries inspired by real people, real places… and a little imagination.
+      </p>
+      <a href="books.html" class="btn">Explore the Books</a>
+    </div>
+
+    <div class="hero-image">
+      <img src="book.jpg" alt="Book Cover" />
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <blockquote>I Hope You Enjoy Laughing. - Susanne Sir</blockquote>
+</section>
+
+<section class="press-section">
+  <div class="press-container container">
+    <h2>Welcome</h2>
+
+    <div class="press-grid">
+      <img src="author.jpg" class="press-img" alt="Author">
+
+      <div class="press-text">
+        <p>
+          I live on a private lake. It has an island in the middle with a beautiful ficus tree.
+          This tree attracts lots of Everglades wild life. Sitting in our living room and looking
+          out on the lake is tranquil. It is also very interesting since everyone’s back yard
+          faces into the lake. A great setting for a story. I am a writer at heart.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 Susanne Sir — All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.menu-toggle')
+    .addEventListener('click', () => {
+      document.querySelector('.nav').classList.toggle('show');
+    });
+</script>
+</body>
+
+
+</body>
+</html>

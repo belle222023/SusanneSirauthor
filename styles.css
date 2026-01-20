@@ -1,0 +1,1204 @@
+/* =====================================================
+   IMPORT FONTS
+===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap');
+
+
+/* =====================================================
+   GLOBAL RESET & BASE STYLES
+===================================================== */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Merriweather", "Georgia", serif;
+  color: #1c2e2d;
+  background: #ffffff;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+body {
+  padding-top: 80px;
+}
+
+
+
+/* =====================================================
+   HEADER & NAVIGATION
+===================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #1c2e2d;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Header overlay */
+.site-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 9, 9, 0.274);
+  pointer-events: none;
+  z-index: 1;   /* LOWER layer */
+
+}
+
+/* Header layout */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Logo */
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.logo .white {
+  color: #ffffff;
+}
+
+.logo .red {
+  color: #e10600; /* rich red */
+}
+
+
+/* =====================================================
+   NAV LINKS
+===================================================== */
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #e4f2ec;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: #cc1919;
+  transition: width 0.3s;
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+  width: 100%;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: #fb0e0e;
+  text-shadow: 0 0 6px #c24e4e, 0 0 12px #8e1902;
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: #e4f2ec;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;   /* ABOVE overlay */
+}
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;          /* exact height sa header */
+    left: 0;
+    width: 100%;
+    background: #313030;
+    padding: 1rem 0;
+    z-index: 999;
+  }
+
+  .nav.show {
+    display: flex;
+  }
+
+  .nav a {
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+}
+
+
+
+/* =====================================================
+   HERO SECTION (HOME – VIDEO)
+===================================================== */
+/* =====================================================
+   HERO SECTION (HOME – VIDEO)
+===================================================== */
+.hero-video {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #eee7e7;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.hero-video .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.hero-video .hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-video h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  margin: 0;
+  color: #b41e21;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.hero-video p {
+  max-width: 500px;
+  font-size: 1.15rem;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.hero-video .btn {
+  display: inline-block;
+  background: #b41e21;
+  color: #fff;
+  padding: 0.8rem 1.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.hero-video .btn:hover {
+  background: #aa0101;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.35),
+    0 5px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-image img:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 25px 45px rgba(0, 0, 0, 0.45),
+    0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-video {
+    height: auto;
+    padding: 3rem 1rem;
+    flex-direction: column;
+  }
+
+  .hero-video .hero-inner {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .hero-video h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .hero-video p {
+    max-width: 100%;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .hero-video .btn {
+    margin-top: 1rem;
+  }
+
+  .hero-image {
+    margin: 0 auto;
+    max-width: 300px;
+  }
+
+  .hero-image img {
+    max-height: 380px;
+  }
+}
+
+
+
+/* =====================================================
+   PRESS / INTRO SECTION
+===================================================== */
+.press-section {
+  background: linear-gradient(135deg, #611611 0%, #3f0f0c 100%);
+  color: #f4f7f6;
+  padding: 5rem 2rem;
+}
+
+.press-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: -4rem;
+}
+
+.press-section h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+  letter-spacing: 0.5px;
+}
+
+.press-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* IMAGE STYLE */
+.press-img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  object-fit: cover;
+
+  box-shadow:
+    0 20px 45px rgba(0,0,0,0.45),
+    0 5px 15px rgba(0,0,0,0.25);
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.press-img:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 30px 65px rgba(0,0,0,0.6),
+    0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* TEXT STYLE */
+.press-text {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #f0f5f4;
+}
+
+.press-text p {
+  margin-bottom: 1.2rem;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .press-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .press-img {
+    margin: 0 auto;
+    max-width: 300px;
+  }
+}
+
+
+
+/* =====================================================
+   QUOTE BAND
+===================================================== */
+.quote-band {
+  background: #791717;
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.quote-band blockquote {
+  font-family: "Playfair Display", serif;
+  font-size: 1.9rem;
+  font-style: italic;
+  color: white;
+}
+
+
+
+
+
+/* =====================================================
+   BOOKS SECTION Review
+===================================================== */
+/* ==============================
+   REVIEWS SECTION
+============================== */
+.reviews-section {
+  padding: 6rem 2rem;
+  background: #320f0f;
+  margin-top: -3rem;
+}
+
+.reviews-section h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 4rem;
+  color: #f3f5f5;
+  font-family: 'Playfair Display', serif;
+}
+
+/* ==============================
+   GRID
+============================== */
+.reviews-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+/* ==============================
+   REVIEW BOX COMMON
+============================== */
+.review-box {
+  padding: 3rem 2.6rem;
+  border-radius: 18px;
+  line-height: 1.85;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+
+/* ==============================
+   STAR RATING
+============================== */
+.review-stars {
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+}
+
+/* yellow stars */
+.review-stars span {
+  color: #f5c518;
+}
+
+/* ==============================
+   WHITE REVIEW BOX
+============================== */
+.review-box.light {
+  background: #ffffff;
+  color: #333;
+  overflow: hidden;
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.08),
+    0 6px 15px rgba(0,0,0,0.05);
+}
+
+/* RED SIDE ACCENTS */
+.review-box.light::before,
+.review-box.light::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 6px;
+  height: 100%;
+}
+
+.review-box.light::before {
+  left: 0;
+  background: linear-gradient(180deg, #611611, #c33131);
+}
+
+.review-box.light::after {
+  right: 0;
+  background: linear-gradient(180deg, #c33131, #611611);
+}
+
+/* ==============================
+   FEATURED RED BOX
+============================== */
+.review-box.featured {
+  background: linear-gradient(160deg, #611611, #b71c1c);
+  color: #ffffff;
+  box-shadow: 0 28px 65px rgba(0,0,0,0.35);
+  transform: translateY(-14px);
+}
+
+/* featured stars brighter */
+.review-box.featured .review-stars span {
+  color: #ffd700;
+}
+
+/* ==============================
+   TEXT
+============================== */
+.review-box p {
+  font-size: 1.05rem;
+  margin-bottom: 1.4rem;
+}
+
+.review-box span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+.review-box.featured span {
+  color: #ffeaea;
+}
+
+/* ==============================
+   HOVER EFFECT
+============================== */
+.review-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 992px) {
+  .reviews-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .reviews-row {
+    grid-template-columns: 1fr;
+  }
+
+  .review-box {
+    padding: 2.4rem 2rem;
+  }
+}
+
+
+
+
+/* =====================================================
+   ABOUT PAGE / AUTHOR SECTION
+===================================================== */
+
+/* =====================================================
+   AUTHOR SECTION / ABOUT THE AUTHOR (SIDE-BY-SIDE)
+===================================================== */
+.author-section {
+  position: relative;       /* needed for layering video and content */
+  background: #151414;      /* fallback color if video fails */
+  text-align: center;
+  padding: 5rem 2rem;
+  overflow: hidden;         /* clips the video inside the section */
+  color: #fff;              /* ensures text is readable */
+}
+
+/* VIDEO BACKGROUND */
+.author-section video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* cover the entire section */
+  z-index: 1;              /* behind the content */
+  pointer-events: none;    /* clicks go through to content */
+  opacity: 0.5;            /* optional: dims video for text readability */
+}
+
+/* AUTHOR CONTENT ABOVE VIDEO */
+.author-container {
+  position: relative;
+  z-index: 2;              /* ensures text and images are above video */
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* PHOTOS ROW */
+.author-photos-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+/* AUTHOR PHOTOS */
+.author-photo-large {
+  flex-shrink: 0;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #c80707;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.author-photo-large:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* TITLE & TEXT */
+.author-container h2 {
+  font-family: 'Playfair Display', serif;
+  color: #f9f9f9;
+  font-size: 2.2rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.author-container p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  max-width: 750px;
+  color: #b8c1c1;
+  margin: 0 auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .author-photo-large {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+
+/* =====================================================
+   BIOGRAPHY / BOOK CARDS
+===================================================== */
+.bio-fullwidth {
+  background: #240d0d;
+  padding: 6rem 2rem;
+  
+}
+
+.section-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 2.4rem;
+  margin-top: 5rem;
+  color: #e8e5e5; /* red title for emphasis */
+}
+
+.bio-container {
+  max-width: 1100px;
+  margin: auto;
+  margin-top: -4rem;
+}
+
+/* Bio card shared styles */
+.bio-card {
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.bio-card h3 {
+  font-family: "Playfair Display", serif;
+  margin-top: 0;
+}
+
+.bio-card p {
+  line-height: 1.7;
+}
+
+.bio-card blockquote {
+  font-style: italic;
+  border-left: 3px solid #581515;
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+
+/* Hover effect */
+.bio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* =====================================================
+   ALTERNATING CARD STYLES
+===================================================== */
+
+/* Red card */
+.bio-card.red-card {
+  background: #c70039;
+  color: #fff;
+  border-left: 5px solid #8e0000;
+}
+
+/* White card with red side accents */
+.bio-card.white-card {
+  background: #ffffff;
+  color: #1c2e2d;
+  border-left: 5px solid #c70039;
+  border-right: 5px solid #c70039;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+  .author-photo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .bio-card {
+    padding: 1.5rem;
+  }
+}
+/* Horizontal highlight row */
+.bio-highlight-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Highlight cards */
+.bio-highlight-card {
+  position: relative;
+  padding: 2rem 1.5rem;
+  border-radius: 18px;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Red accent line */
+.bio-highlight-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: #c1121f;
+  border-radius: 18px 18px 0 0;
+}
+
+/* Icons */
+.bio-highlight-card .icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* Titles */
+.bio-highlight-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Hover effect */
+.bio-highlight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(193,18,31,0.45);
+}
+
+/* Message special style */
+.message-card {
+  background: linear-gradient(135deg, #c1121f, #7a0b12);
+}
+
+.message-card blockquote {
+  margin-top: 0.5rem;
+  font-style: italic;
+  border-left: 4px solid #fff;
+  padding-left: 1rem;
+}
+
+
+/* =====================================================
+   BOOK IMAGES SECTION 
+===================================================== */
+.book-images-section {
+  position: relative;        /* needed for video layering */
+  background: #272525;       /* fallback background */
+  text-align: center;
+  padding: 4rem 2rem;
+  overflow: hidden;           /* clip video inside section */            
+}
+
+/* VIDEO BACKGROUND */
+.book-images-section video.book-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* fill the section */
+  z-index: 1;               /* behind content */
+  pointer-events: none;     /* clicks go through video */
+  opacity: 0.5;             /* dim video for readability */
+}
+
+/* CONTAINER ABOVE VIDEO */
+.book-images-container {
+  position: relative;
+  z-index: 2;               /* content above video */
+  display: flex;
+  flex-direction: column;   /* stack images + button vertically */
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Row of book covers */
+.book-covers-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Individual book covers */
+.book-cover {
+  width: 220px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-cover:hover {
+  transform: scale(1.05);
+
+}
+
+/* OBLONG BUY BUTTON */
+.buy-book-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 2rem;      
+  background: #c70000;       
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 50px;       
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.buy-book-btn:hover {
+  background: #e10606;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .book-cover {
+    width: 180px;
+  }
+
+  .buy-book-btn {
+    padding: 0.5rem 1.5rem; 
+    font-size: 0.9rem;
+  }
+}
+.book-fullwidth {
+  background: #320f0f; /* black background for entire section */
+  padding: 4rem 2rem;
+  color: #fff; /* default text color white */
+}
+
+
+/* =====================================================
+   BOOK CARDS (Red & White alternating)
+===================================================== */
+/* Grid layout for bio/book cards */
+.bio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Bio-card base styles */
+.bio-card {
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+  color: #dc4f4f;
+}
+
+/* Red card */
+.bio-card.red-card {
+  background: #840909;
+}
+s
+/* White card with red side accents */
+.bio-card.white-card {
+  background: #090909;
+  color: #ecf0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-card.white-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, #cd0808, #b71c1c);
+}
+
+.bio-card.white-card::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, #431b1b, #782828);
+}
+
+/* Card text */
+.bio-card h3 {
+  font-family: 'Playfair Display', serif;
+  margin-top: 0;
+}
+
+.bio-card p, .bio-card blockquote {
+  font-family: 'Merriweather', serif;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Responsive: stack cards vertically on smaller screens */
+@media (max-width: 768px) {
+  .bio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* HERO VIDEO (small on top) */
+.preview-hero-video {
+  width: 100%;
+  max-width: 800px;       /* mas dako para makita tanan characters */
+  height: auto;           /* automatic height based on video ratio */
+  aspect-ratio: 16 / 9;   /* maintain standard video ratio */
+  object-fit: contain;    /* ensures all video content is visible */
+  border-radius: 15px;
+  border: 3px solid #c70000; /* red border */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  display: block;
+  margin: 2rem auto;       /* center horizontally + spacing */
+  background: #040404;        /* black background for letterboxing */
+}
+
+/* HERO IMAGE BELOW VIDEO */
+.preview-hero-section {
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  background: #320f0f;
+}
+
+.video-wrapper {
+  background: #320f0f;              /* BLACK BACKGROUND */
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.preview-hero-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Large Image */
+.preview-hero-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 5px solid #c70000; /* red border */
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  display: block;
+  margin: 0 auto;
+}
+
+/* BUTTON BELOW IMAGE */
+.preview-hero-link {
+  display: inline-block;
+  margin: 1.5rem auto 0;
+  background: #c70000;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  padding: 0.9rem 3rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.preview-hero-link:hover {
+  background: #e10606;
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .preview-hero-video { max-width: 700px; }
+  .preview-hero-image { height: 500px; }
+  .preview-hero-link { padding: 0.8rem 2.5rem; font-size: 1rem; }
+}
+
+@media (max-width: 768px) {
+  .preview-hero-video { max-width: 500px; }
+  .preview-hero-image { height: 350px; }
+  .preview-hero-link { padding: 0.6rem 2rem; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .preview-hero-video { max-width: 300px; }
+  .preview-hero-image { height: 250px; }
+  .preview-hero-link { padding: 0.5rem 1.5rem; font-size: 0.85rem; }
+}
+
+/* ===== GALLERY SECTION ===== */
+.gallery-section {
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  background: #320f0f;
+}
+
+.gallery-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #c70000;
+  margin-top: -2rem;
+}
+
+/* FLEX LAYOUT FOR 5 IMAGES INLINE */
+.gallery-container {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  gap: 1.5rem;            /* space between images */
+  flex-wrap: wrap;         /* wrap on smaller screens */
+}
+
+/* INDIVIDUAL IMAGE */
+.gallery-image {
+  width: calc(20% - 1.2rem); /* 5 images in a row with gaps */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .gallery-image { width: calc(33.33% - 1rem); height: 180px; } /* 3 images per row */
+}
+
+@media (max-width: 768px) {
+  .gallery-image { width: calc(50% - 1rem); height: 160px; } /* 2 images per row */
+}
+
+@media (max-width: 480px) {
+  .gallery-image { width: 100%; height: auto; } /* single column on mobile */
+}
+
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+footer {
+  background: #3b0c0c;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+}
+.site-footer a {
+  color: #f3f5f5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===== CONTACT FORM STYLE ===== */
+.contact-card {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.contact-form {
+  display: grid;
+  gap: 15px;
+}
+
+.contact-form label {
+  font-weight: 700;
+  color: #222;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.buy-book-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 20px;
+  background: #d32f2f;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.buy-book-btn:hover {
+  opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-card {
+    padding: 20px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+  }
+}
+
