@@ -38,7 +38,7 @@
       <p class="kicker">
         Cozy mysteries inspired by real people, real places… and a little imagination.
       </p>
-      <a href="books.html" class="btn">Explore the Books</a>
+      <a href="books.html" class="btn" id="explore-btn">Explore the Books</a>
     </div>
 
     <div class="hero-image">
@@ -48,8 +48,8 @@
 </section>
 
 <!-- 🔊 BACKGROUND MUSIC (LOOPING) -->
-<audio autoplay loop muted id="bg-music">
-  <source src="background-music-new.mp3" type="audio/mpeg">
+<audio id="click-sound">
+  <source src="/click.mp3" type="audio/mpeg">
 </audio>
 
 <section class="quote-band">
@@ -89,18 +89,28 @@
     .addEventListener('click', () => {
       document.querySelector('.nav').classList.toggle('show');
     });
-  // 🔓 Unmute music after first user interaction (required by browsers)
-  document.addEventListener('click', function () {
-    const music = document.getElementById('bg-music');
-    music.muted = false;
-    music.play();
-  }, { once: true });
+  const exploreBtn = document.getElementById('explore-btn');
+  const clickSound = document.getElementById('click-sound');
+
+  exploreBtn.addEventListener('click', function(e) {
+    e.preventDefault(); // stop immediate navigation
+
+    clickSound.currentTime = 0; // reset to start
+    clickSound.play();
+
+    // Navigate after a tiny delay so sound plays
+    setTimeout(() => {
+      window.location.href = exploreBtn.href; 
+    }, 150); // 150ms is enough to hear the click
+  });
+
 </script>
 </body>
 
 
 </body>
 </html>
+
 
 
 
