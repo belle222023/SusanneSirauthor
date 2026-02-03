@@ -47,6 +47,11 @@
   </div>
 </section>
 
+<!-- 🔊 BACKGROUND MUSIC (LOOPING) -->
+<audio autoplay loop muted id="bg-music">
+  <source src="/background-music.mp3" type="audio/mpeg">
+</audio>
+
 <section class="quote-band">
   <blockquote>I Hope You Enjoy Laughing. - Susanne Sir</blockquote>
 </section>
@@ -84,9 +89,16 @@
     .addEventListener('click', () => {
       document.querySelector('.nav').classList.toggle('show');
     });
+  // 🔓 Unmute music after first user interaction (required by browsers)
+  document.addEventListener('click', function () {
+    const music = document.getElementById('bg-music');
+    music.muted = false;
+    music.play();
+  }, { once: true });
 </script>
 </body>
 
 
 </body>
 </html>
+
