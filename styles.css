@@ -1075,8 +1075,8 @@ s
 /* INDIVIDUAL IMAGE */
 .gallery-image {
   width: calc(20% - 1.2rem); /* 5 images in a row with gaps */
-  height: 200px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.2);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -1201,4 +1201,5 @@ footer {
     font-size: 14px;
   }
 }
+
 
